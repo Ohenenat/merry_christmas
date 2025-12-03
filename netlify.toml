@@ -7,6 +7,10 @@
   command = "npm run dev"
   port = 3000
 
+[build.environment]
+  NODE_ENV = "production"
+  NODE_VERSION = "18"
+
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/server/:splat"
@@ -21,3 +25,13 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/music/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"

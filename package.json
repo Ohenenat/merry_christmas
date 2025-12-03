@@ -10,12 +10,14 @@
   "keywords": ["christmas", "wishes", "festive"],
   "author": "Nathaniel",
   "license": "MIT",
+  "engines": {
+    "node": "18.x"
+  },
   "dependencies": {
     "express": "^4.18.2",
     "sqlite3": "^5.1.6",
     "cors": "^2.8.5",
-    "body-parser": "^1.20.2",
-    "serverless-http": "^3.2.0"
+    "body-parser": "^1.20.2"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"

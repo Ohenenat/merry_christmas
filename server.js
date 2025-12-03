@@ -61,7 +61,7 @@ app.post('/api/wishes', (req, res) => {
     } else {
       res.json({ 
         id: this.lastID,
-        link: `http://localhost:${PORT}/wish?from=${encodeURIComponent(from_name)}&id=${this.lastID}`
+        link: `${req.get('host').startsWith('localhost') ? 'http' : 'https'}://${req.get('host')}/wish?from=${encodeURIComponent(from_name)}&id=${this.lastID}`
       });
     }
   });
