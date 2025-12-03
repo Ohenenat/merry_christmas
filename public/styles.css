@@ -1,0 +1,867 @@
+/* ==================== GENERAL STYLES ==================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Fredoka', sans-serif;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.homepage {
+    background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 50%, #1a3a28 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 80px;
+}
+
+.wish-page {
+    background: linear-gradient(135deg, #0f2818 0%, #1a3a2e 50%, #0d1f17 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 80px;
+}
+
+/* ==================== SNOW EFFECT ==================== */
+
+#snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.snowflake {
+    position: fixed;
+    top: -10px;
+    z-index: 1;
+    user-select: none;
+    cursor: default;
+    color: white;
+    font-size: 1.5em;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    animation: snowfall linear infinite;
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+@keyframes snowfall {
+    to {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+    }
+}
+
+/* ==================== CHRISTMAS LIGHTS ==================== */
+
+.lights-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.light {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #ffff00, #ff6600);
+    box-shadow: 0 0 20px currentColor;
+    opacity: 0.6;
+    animation: twinkle 2s infinite ease-in-out;
+    pointer-events: none;
+}
+
+.light:nth-child(1) {
+    top: 5%;
+    left: 10%;
+    background: radial-gradient(circle at 30% 30%, #ff0000, #cc0000);
+    animation-delay: 0s;
+}
+
+.light:nth-child(2) {
+    top: 8%;
+    right: 15%;
+    background: radial-gradient(circle at 30% 30%, #00ff00, #008800);
+    animation-delay: 0.5s;
+}
+
+.light:nth-child(3) {
+    top: 12%;
+    left: 50%;
+    background: radial-gradient(circle at 30% 30%, #0000ff, #000088);
+    animation-delay: 1s;
+}
+
+.light:nth-child(4) {
+    top: 6%;
+    right: 5%;
+    background: radial-gradient(circle at 30% 30%, #ffff00, #ff6600);
+    animation-delay: 1.5s;
+}
+
+.light:nth-child(5) {
+    top: 10%;
+    left: 30%;
+    background: radial-gradient(circle at 30% 30%, #ff00ff, #aa0055);
+    animation-delay: 0.8s;
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.3;
+        box-shadow: 0 0 10px currentColor;
+    }
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 30px currentColor;
+    }
+}
+
+/* ==================== SPARKLES ==================== */
+
+.sparkle {
+    position: fixed;
+    pointer-events: none;
+    font-size: 2em;
+    animation: sparkle-animation 2s ease-out forwards;
+    z-index: 2;
+}
+
+@keyframes sparkle-animation {
+    0% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.3) translateY(-100px);
+    }
+}
+
+#sparkles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* ==================== CONTAINER & LAYOUT ==================== */
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.wish-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+/* ==================== HEADER ==================== */
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeInDown 1s ease-out;
+}
+
+.title {
+    font-size: 3em;
+    color: #fff;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: 700;
+    letter-spacing: 2px;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.subtitle {
+    font-size: 1.3em;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* ==================== CARDS ==================== */
+
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    animation: slideUp 0.8s ease-out;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.card-content {
+    width: 100%;
+}
+
+.wish-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    animation: slideUp 0.8s ease-out;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    max-width: 700px;
+    width: 100%;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== FORM STYLES ==================== */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-field,
+.textarea-field {
+    width: 100%;
+    padding: 15px 40px 15px 15px;
+    font-size: 1.1em;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-family: 'Fredoka', sans-serif;
+    transition: all 0.3s ease;
+    background: #fff;
+}
+
+.input-field:focus,
+.textarea-field:focus {
+    outline: none;
+    border-color: #d4af37;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    background: #fffef5;
+}
+
+.textarea-field {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.input-icon {
+    position: absolute;
+    right: 12px;
+    font-size: 1.5em;
+    pointer-events: none;
+}
+
+.greeting-text {
+    font-size: 1.2em;
+    color: #2d5a3d;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* ==================== CUSTOMIZATION SECTION ==================== */
+
+.customization-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.customization-section label {
+    font-weight: 600;
+    color: #2d5a3d;
+    font-size: 0.95em;
+}
+
+.theme-selector {
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+.theme-btn {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background: #fff;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+}
+
+.theme-btn:hover,
+.theme-btn.active {
+    border-color: #d4af37;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+/* ==================== BUTTONS ==================== */
+
+.btn {
+    padding: 12px 24px;
+    font-size: 1em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #d4af37 0%, #e6c75f 100%);
+    color: #2d5a3d;
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
+}
+
+.btn-primary:active {
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #66bb6a 0%, #81c784 100%);
+    color: white;
+    box-shadow: 0 5px 15px rgba(102, 187, 106, 0.3);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(102, 187, 106, 0.4);
+}
+
+.btn-outline {
+    background: transparent;
+    color: #2d5a3d;
+    border: 2px solid #2d5a3d;
+}
+
+.btn-outline:hover {
+    background: #2d5a3d;
+    color: white;
+}
+
+.btn-share {
+    flex: 1;
+    min-width: 100px;
+    padding: 10px 15px;
+    font-size: 0.95em;
+    background: linear-gradient(135deg, #4285f4 0%, #1f73e6 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+}
+
+.btn-whatsapp {
+    background: linear-gradient(135deg, #25d366 0%, #1fb051 100%);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.btn-facebook {
+    background: linear-gradient(135deg, #1877f2 0%, #0c63e4 100%);
+    box-shadow: 0 4px 12px rgba(24, 119, 242, 0.3);
+}
+
+.btn-twitter {
+    background: linear-gradient(135deg, #000000 0%, #333333 100%);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn-share:hover {
+    transform: translateY(-3px);
+}
+
+/* ==================== LINK SECTION ==================== */
+
+.link-section {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f8f8f8;
+    border-radius: 15px;
+    animation: slideDown 0.5s ease-out;
+}
+
+.link-section.hidden {
+    display: none;
+}
+
+.link-section h3 {
+    color: #2d5a3d;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.link-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.link-input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 0.95em;
+    word-break: break-all;
+    background: white;
+}
+
+.share-buttons {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+
+.share-buttons-wish {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+}
+
+/* ==================== WISH STYLES ==================== */
+
+.wish-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.wish-title {
+    font-size: 2.5em;
+    color: #2d5a3d;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.wish-message-box {
+    background: linear-gradient(135deg, #fffef5 0%, #fffbf0 100%);
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    border: 2px solid #d4af37;
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+}
+
+.wish-message {
+    font-size: 1.4em;
+    color: #2d5a3d;
+    line-height: 1.8;
+    text-align: center;
+    font-weight: 500;
+}
+
+.wish-decorations {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 20px 0;
+    font-size: 2.5em;
+    animation: float 3s ease-in-out infinite;
+}
+
+.decoration {
+    animation: spin 3s linear infinite;
+}
+
+.decoration:nth-child(2) {
+    animation-delay: -1s;
+}
+
+.decoration:nth-child(3) {
+    animation-delay: -2s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.wish-share-section {
+    text-align: center;
+    margin: 20px 0;
+    padding: 20px;
+    background: #f8f8f8;
+    border-radius: 15px;
+}
+
+.share-prompt {
+    color: #2d5a3d;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.wish-actions {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* ==================== MUSIC CONTROL ==================== */
+
+.music-control {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.music-btn {
+    padding: 15px 25px;
+    font-size: 1em;
+    background: linear-gradient(135deg, #d4af37 0%, #e6c75f 100%);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+    color: #2d5a3d;
+    transition: all 0.3s ease;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+}
+
+.music-btn.playing::after {
+    content: '♪';
+    margin-left: 5px;
+    animation: music-note 0.6s ease-in-out infinite;
+}
+
+@keyframes music-note {
+    0%, 100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateY(-5px);
+    }
+}
+
+/* ==================== BELLS EASTER EGG ==================== */
+
+.bells {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.bell {
+    font-size: 2em;
+    animation: bell-swing 2s ease-in-out infinite;
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+
+.bell:hover {
+    font-size: 2.5em;
+}
+
+.bell:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.bell:nth-child(2) {
+    animation-delay: -0.5s;
+}
+
+.bell:nth-child(3) {
+    animation-delay: -1s;
+}
+
+.bell.ringing {
+    animation: bell-ring 0.3s ease-in-out;
+}
+
+@keyframes bell-swing {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-10deg);
+    }
+    75% {
+        transform: rotate(10deg);
+    }
+}
+
+@keyframes bell-ring {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-15deg);
+    }
+    75% {
+        transform: rotate(15deg);
+    }
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2em;
+    }
+
+    .subtitle {
+        font-size: 1em;
+    }
+
+    .card,
+    .wish-card {
+        padding: 25px 20px;
+    }
+
+    .input-field,
+    .textarea-field {
+        padding: 12px 35px 12px 12px;
+        font-size: 1em;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.95em;
+    }
+
+    .wish-title {
+        font-size: 1.8em;
+    }
+
+    .wish-message {
+        font-size: 1.2em;
+    }
+
+    .share-buttons,
+    .share-buttons-wish {
+        flex-direction: column;
+    }
+
+    .btn-share {
+        width: 100%;
+    }
+
+    .theme-selector {
+        gap: 5px;
+    }
+
+    .theme-btn {
+        padding: 10px;
+        font-size: 1.3em;
+    }
+
+    .wish-decorations {
+        gap: 15px;
+        font-size: 2em;
+    }
+
+    .bells {
+        top: 10px;
+        right: 10px;
+    }
+
+    .music-control {
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .music-btn {
+        padding: 12px 20px;
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+
+    header {
+        margin-bottom: 25px;
+    }
+
+    .title {
+        font-size: 1.5em;
+        margin-bottom: 5px;
+    }
+
+    .subtitle {
+        font-size: 0.9em;
+    }
+
+    .card,
+    .wish-card {
+        padding: 20px 15px;
+        border-radius: 15px;
+    }
+
+    .greeting-text {
+        font-size: 1em;
+    }
+
+    .input-field,
+    .textarea-field {
+        padding: 10px 30px 10px 10px;
+        font-size: 0.95em;
+    }
+
+    .btn {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+
+    .wish-title {
+        font-size: 1.5em;
+    }
+
+    .wish-message {
+        font-size: 1.1em;
+    }
+
+    .link-box {
+        flex-direction: column;
+    }
+
+    .link-input {
+        font-size: 0.85em;
+    }
+
+    .wish-decorations {
+        gap: 10px;
+        font-size: 1.5em;
+    }
+
+    .form-group {
+        gap: 15px;
+    }
+
+    .lights-container {
+        display: none;
+    }
+}
+
+/* ==================== UTILITY CLASSES ==================== */
+
+.hidden {
+    display: none !important;
+}
+
+.visible {
+    display: block !important;
+}

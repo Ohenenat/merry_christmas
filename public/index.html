@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Wish Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body class="homepage">
+    <!-- Snow falling effect -->
+    <div id="snow-container"></div>
+
+    <!-- Christmas lights -->
+    <div class="lights-container">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+    </div>
+
+    <!-- Main content -->
+    <div class="container">
+        <header>
+            <h1 class="title">🎄 Christmas Wish Generator 🎄</h1>
+            <p class="subtitle">Share your festive wishes with the world!</p>
+        </header>
+
+        <main class="main-content">
+            <div class="card">
+                <div class="card-content">
+                    <p class="greeting-text">✨ Enter your name to create a magical Christmas wish link ✨</p>
+                    
+                    <form id="wish-form" class="form-group">
+                        <div class="input-wrapper">
+                            <input 
+                                type="text" 
+                                id="from-name" 
+                                class="input-field" 
+                                placeholder="Enter your name..." 
+                                maxlength="50"
+                                required
+                            >
+                            <span class="input-icon">🎅</span>
+                        </div>
+
+                        <!-- Optional customization -->
+                        <div class="customization-section">
+                            <label for="theme">Choose Theme:</label>
+                            <div class="theme-selector">
+                                <button type="button" class="theme-btn active" data-theme="snow" title="Snowy">❄️</button>
+                                <button type="button" class="theme-btn" data-theme="lights" title="Lights">💡</button>
+                                <button type="button" class="theme-btn" data-theme="santa" title="Santa">🎅</button>
+                                <button type="button" class="theme-btn" data-theme="fireplace" title="Fireplace">🔥</button>
+                            </div>
+                        </div>
+
+                        <div class="customization-section">
+                            <label for="message">Custom Message (Optional):</label>
+                            <textarea 
+                                id="custom-message" 
+                                class="textarea-field" 
+                                placeholder="Add your own Christmas message..." 
+                                maxlength="200"
+                            ></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            🎁 Generate My Christmas Wish Link
+                        </button>
+                    </form>
+
+                    <!-- Generated link section (hidden initially) -->
+                    <div id="link-section" class="link-section hidden">
+                        <h3>✨ Your Wish Link is Ready! ✨</h3>
+                        <div class="link-box">
+                            <input 
+                                type="text" 
+                                id="generated-link" 
+                                class="link-input" 
+                                readonly
+                            >
+                            <button id="copy-link-btn" class="btn btn-secondary">
+                                📋 Copy Link
+                            </button>
+                        </div>
+
+                        <div class="share-buttons">
+                            <button id="share-whatsapp" class="btn btn-share btn-whatsapp" title="Share on WhatsApp">
+                                💬 WhatsApp
+                            </button>
+                            <button id="share-facebook" class="btn btn-share btn-facebook" title="Share on Facebook">
+                                👍 Facebook
+                            </button>
+                            <button id="share-twitter" class="btn btn-share btn-twitter" title="Share on Twitter">
+                                𝕏 Twitter
+                            </button>
+                        </div>
+
+                        <button id="create-another-btn" class="btn btn-outline">
+                            🔄 Create Another Wish
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Christmas music toggle -->
+        <div class="music-control">
+            <button id="music-toggle" class="music-btn">
+                🔊 Music
+            </button>
+        </div>
+    </div>
+
+    <!-- Hidden audio element for background music -->
+    <audio id="christmas-music" loop autoplay muted>
+        <source src="/music/MP3  Carol of the Bells.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Snowflakes container for snow animation -->
+    <script src="scripts.js"></script>
+</body>
+</html>

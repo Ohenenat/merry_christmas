@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Wish</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body class="wish-page" id="wish-body">
+    <!-- Snow falling effect -->
+    <div id="snow-container"></div>
+
+    <!-- Sparkles effect -->
+    <div id="sparkles-container"></div>
+
+    <!-- Christmas lights -->
+    <div class="lights-container">
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+        <div class="light"></div>
+    </div>
+
+    <!-- Main content -->
+    <div class="wish-container">
+        <div class="wish-card">
+            <div class="wish-header">
+                <h1 class="wish-title">🎄 Merry Christmas! 🎄</h1>
+            </div>
+
+            <div class="wish-message-box">
+                <p id="wish-message" class="wish-message">
+                    Loading your special wish...
+                </p>
+            </div>
+
+            <div class="wish-decorations">
+                <div class="decoration">🎁</div>
+                <div class="decoration">⛄</div>
+                <div class="decoration">🔔</div>
+            </div>
+
+            <!-- Share section -->
+            <div class="wish-share-section">
+                <p class="share-prompt">Share this wish:</p>
+                <div class="share-buttons-wish">
+                    <button id="share-whatsapp-wish" class="btn btn-share btn-whatsapp" title="Share on WhatsApp">
+                        💬 WhatsApp
+                    </button>
+                    <button id="share-facebook-wish" class="btn btn-share btn-facebook" title="Share on Facebook">
+                        👍 Facebook
+                    </button>
+                    <button id="share-twitter-wish" class="btn btn-share btn-twitter" title="Share on Twitter">
+                        𝕏 Twitter
+                    </button>
+                    <button id="copy-wish-link" class="btn btn-share" title="Copy Link">
+                        📋 Copy Link
+                    </button>
+                </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="wish-actions">
+                <button id="create-own-wish" class="btn btn-primary">
+                    🎅 Create Your Own Wish
+                </button>
+            </div>
+        </div>
+
+        <!-- Easter egg: Bell that plays when clicked -->
+        <div id="bells" class="bells">
+            <div class="bell">🔔</div>
+            <div class="bell">🔔</div>
+            <div class="bell">🔔</div>
+        </div>
+    </div>
+
+    <!-- Christmas music toggle -->
+    <div class="music-control">
+        <button id="music-toggle" class="music-btn">
+            🔊 Music
+        </button>
+    </div>
+
+    <!-- Hidden audio element -->
+    <audio id="christmas-music" loop autoplay muted>
+        <source src="/music/MP3  Carol of the Bells.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="bell-sound">
+        <source src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
