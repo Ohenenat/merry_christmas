@@ -110,7 +110,6 @@ function initHomepage() {
     const generatedLink = document.getElementById('generated-link');
     const copyLinkBtn = document.getElementById('copy-link-btn');
     const createAnotherBtn = document.getElementById('create-another-btn');
-    const customMessageInput = document.getElementById('custom-message');
     let selectedTheme = 'snow';
     let wishId = null;
 
@@ -145,7 +144,6 @@ function initHomepage() {
                     },
                     body: JSON.stringify({
                         from_name: fromName,
-                        message: customMessageInput.value,
                         background_theme: selectedTheme,
                         greeting_style: 'standard'
                     })

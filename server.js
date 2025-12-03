@@ -56,14 +56,14 @@ app.get('/wish', (req, res) => {
 
 // API: Create a new wish
 app.post('/api/wishes', (req, res) => {
-  const { from_name, to_name, message, background_theme, greeting_style } = req.body;
+  const { from_name, background_theme, greeting_style } = req.body;
 
   const stmt = db.prepare(`
-    INSERT INTO wishes (from_name, to_name, message, background_theme, greeting_style)
-    VALUES (?, ?, ?, ?, ?)
+    INSERT INTO wishes (from_name, background_theme, greeting_style)
+    VALUES (?, ?, ?)
   `);
 
-  stmt.run([from_name, to_name || '', message || '', background_theme || 'snow', greeting_style || 'standard'], function(err) {
+  stmt.run([from_name, background_theme || 'snow', greeting_style || 'standard'], function(err) {
     if (err) {
       res.status(500).json({ error: 'Failed to create wish' });
     } else {
