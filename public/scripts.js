@@ -59,14 +59,14 @@ function initMusicControl() {
     const christmasMusic = document.getElementById('christmas-music');
 
     if (musicToggle && christmasMusic) {
-        // Try to unmute and play music immediately
-        christmasMusic.muted = false;
+        // Try to play music with muted attribute first (allowed by browsers)
         christmasMusic.play().catch(err => console.log('Autoplay prevented:', err));
         musicToggle.classList.add('playing');
 
         musicToggle.addEventListener('click', (e) => {
             e.stopPropagation();
             if (christmasMusic.paused) {
+                christmasMusic.muted = false;
                 christmasMusic.play().catch(err => console.log('Autoplay prevented:', err));
                 musicToggle.classList.add('playing');
             } else {
@@ -75,11 +75,19 @@ function initMusicControl() {
             }
         });
 
-        // Unmute on first user interaction
+        // Unmute on first user interaction and play
         document.addEventListener('click', () => {
             christmasMusic.muted = false;
             christmasMusic.play().catch(err => console.log('Autoplay prevented:', err));
             musicToggle.classList.add('playing');
+        }, { once: true });
+
+        // Also unmute on any keyboard interaction
+        document.addEventListener('keydown', () => {
+            if (christmasMusic.muted) {
+                christmasMusic.muted = false;
+                christmasMusic.play().catch(err => console.log('Autoplay prevented:', err));
+            }
         }, { once: true });
 
         // Stop music when user leaves or closes the page
@@ -325,9 +333,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize music control
     initMusicControl();
 
-    // Check if we're on homepage or wish page
+    // Ensure music plays after a short delay on wish page
     const isWishPage = window.location.pathname === '/wish';
+    if (isWishPage) {
+        setTimeout(() => {
+            const christmasMusic = document.getElementById('christmas-music');
+            if (christmasMusic && christmasMusic.paused) {
+                christmasMusic.play().catch(err => console.log('Music play attempted'));
+            }
+        }, 500);
+    }
 
+    // Check if we're on homepage or wish page
     if (isWishPage) {
         initWishPage();
     } else {
