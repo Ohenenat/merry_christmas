@@ -226,8 +226,7 @@ function initHomepage() {
 // ==================== WISH PAGE FUNCTIONALITY ====================
 
 function initWishPage() {
-    const fromName = getQueryParam('from');
-    const theme = getQueryParam('theme') || 'snow';
+    const wishId = getQueryParam('id');
     const wishMessage = document.getElementById('wish-message');
     const createOwnWishBtn = document.getElementById('create-own-wish');
     const shareWhatsAppWish = document.getElementById('share-whatsapp-wish');
@@ -237,22 +236,41 @@ function initWishPage() {
     const bells = document.querySelectorAll('.bell');
     const wishBody = document.getElementById('wish-body');
 
-    // Apply theme
-    applyTheme(theme, wishBody);
+    // Fetch wish data from database
+    if (wishId) {
+        fetch(`/api/wishes/id/${wishId}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data && data.from_name) {
+                    const fromName = data.from_name;
+                    const theme = data.background_theme || 'snow';
+                    
+                    // Apply theme
+                    applyTheme(theme, wishBody);
 
-    // Display message
-    if (fromName) {
-        const customMessage = `
-            🎄 Merry Christmas! 🎄
+                    // Display message
+                    const customMessage = `
+                        🎄 Merry Christmas! 🎄
 
-            This festive wish is from <strong>${fromName}</strong> to you!
+                        This festive wish is from <strong>${fromName}</strong> to you!
 
-            May your holidays be filled with joy, laughter, and love.
-            Wishing you a magical Christmas season! 🎅⛄✨
-        `;
-        wishMessage.innerHTML = customMessage;
+                        May your holidays be filled with joy, laughter, and love.
+                        Wishing you a magical Christmas season! 🎅⛄✨
+                    `;
+                    wishMessage.innerHTML = customMessage;
+                } else {
+                    wishMessage.textContent = 'Wish not found! 🎄';
+                    applyTheme('snow', wishBody);
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching wish:', error);
+                wishMessage.textContent = 'Error loading wish! 🎄';
+                applyTheme('snow', wishBody);
+            });
     } else {
         wishMessage.textContent = 'Welcome to your Christmas wish! 🎄';
+        applyTheme('snow', wishBody);
     }
 
     // Create own wish
