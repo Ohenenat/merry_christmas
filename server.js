@@ -131,6 +131,23 @@ app.post('/api/wishes/:id/share', (req, res) => {
   );
 });
 
+// API: Get all wishes (Admin view)
+app.get('/api/all-wishes', (req, res) => {
+  db.all(
+    'SELECT id, from_name, background_theme, timestamp, share_count FROM wishes ORDER BY timestamp DESC',
+    (err, rows) => {
+      if (err) {
+        res.status(500).json({ error: 'Failed to fetch wishes' });
+      } else {
+        res.json({
+          total: rows ? rows.length : 0,
+          wishes: rows || []
+        });
+      }
+    }
+  );
+});
+
 // Start server
 app.listen(PORT, () => {
   console.log(`🎄 Christmas Wish App running at http://localhost:${PORT}`);
