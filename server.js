@@ -65,8 +65,10 @@ app.post('/api/wishes', (req, res) => {
 
   stmt.run([from_name, background_theme || 'snow', greeting_style || 'standard'], function(err) {
     if (err) {
-      res.status(500).json({ error: 'Failed to create wish' });
+      console.error('Error inserting wish:', err.message);
+      res.status(500).json({ error: 'Failed to create wish', details: err.message });
     } else {
+      console.log(`✅ Wish created: ID ${this.lastID} from ${from_name}`);
       res.json({ 
         id: this.lastID,
         link: `${req.get('host').startsWith('localhost') ? 'http' : 'https'}://${req.get('host')}/wish?id=${this.lastID}`
@@ -137,8 +139,10 @@ app.get('/api/all-wishes', (req, res) => {
     'SELECT id, from_name, background_theme, timestamp, share_count FROM wishes ORDER BY timestamp DESC',
     (err, rows) => {
       if (err) {
-        res.status(500).json({ error: 'Failed to fetch wishes' });
+        console.error('Error fetching wishes:', err.message);
+        res.status(500).json({ error: 'Failed to fetch wishes', details: err.message });
       } else {
+        console.log(`📊 Fetched ${rows ? rows.length : 0} wishes from database`);
         res.json({
           total: rows ? rows.length : 0,
           wishes: rows || []
