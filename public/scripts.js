@@ -229,10 +229,6 @@ function initWishPage() {
     const wishId = getQueryParam('id');
     const wishMessage = document.getElementById('wish-message');
     const createOwnWishBtn = document.getElementById('create-own-wish');
-    const shareWhatsAppWish = document.getElementById('share-whatsapp-wish');
-    const shareFacebookWish = document.getElementById('share-facebook-wish');
-    const shareTwitterWish = document.getElementById('share-twitter-wish');
-    const copyWishLink = document.getElementById('copy-wish-link');
     const bells = document.querySelectorAll('.bell');
     const wishBody = document.getElementById('wish-body');
 
@@ -273,44 +269,10 @@ function initWishPage() {
         applyTheme('snow', wishBody);
     }
 
-    // Create own wish
+    // Create own wish button
     if (createOwnWishBtn) {
         createOwnWishBtn.addEventListener('click', () => {
             window.location.href = '/';
-        });
-    }
-
-    // Share current URL
-    const currentUrl = window.location.href;
-
-    if (shareWhatsAppWish) {
-        shareWhatsAppWish.addEventListener('click', () => {
-            const text = `🎄 Check out this Christmas wish: ${currentUrl}`;
-            window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
-        });
-    }
-
-    if (shareFacebookWish) {
-        shareFacebookWish.addEventListener('click', () => {
-            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`, '_blank');
-        });
-    }
-
-    if (shareTwitterWish) {
-        shareTwitterWish.addEventListener('click', () => {
-            const text = `🎄 I received a beautiful Christmas wish!`;
-            window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(currentUrl)}`, '_blank');
-        });
-    }
-
-    if (copyWishLink) {
-        copyWishLink.addEventListener('click', () => {
-            navigator.clipboard.writeText(currentUrl).then(() => {
-                copyWishLink.textContent = '✅ Copied!';
-                setTimeout(() => {
-                    copyWishLink.textContent = '📋 Copy Link';
-                }, 2000);
-            });
         });
     }
 
