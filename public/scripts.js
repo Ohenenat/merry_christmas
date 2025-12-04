@@ -210,7 +210,7 @@ function initHomepage() {
     if (shareWhatsApp) {
         shareWhatsApp.addEventListener('click', () => {
             const link = generatedLink.value;
-            const text = `🎄 I created a Christmas wish for you! Open it: ${link}`;
+            const text = `🎄 I created a Christmas wish for you! Open it and input your name to wish a different person: ${link}`;
             window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
         });
     }
@@ -225,13 +225,40 @@ function initHomepage() {
     if (shareTwitter) {
         shareTwitter.addEventListener('click', () => {
             const link = generatedLink.value;
-            const text = `🎄 I created a Christmas wish for you!`;
+            const text = `🎄 I created a Christmas wish for you! Open it and input your name to wish a different person: ${link}`;
             window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(link)}`, '_blank');
         });
     }
 }
 
 // ==================== WISH PAGE FUNCTIONALITY ====================
+
+function getRandomWishMessage(fromName) {
+    const messages = [
+        `🎄 Merry Christmas! 🎄
+
+This festive wish is from <strong>${fromName}</strong> to you!
+
+May your holidays be filled with joy, laughter, and love.
+Wishing you a magical Christmas season! 🎅⛄✨`,
+        
+        `✨ A Special Christmas Wish ✨
+
+<strong>${fromName}</strong> has sent you warmest Christmas greetings!
+
+May this season bring you happiness, peace, and endless blessings.
+Here's to a wonderful and memorable holiday! 🎁🎄🌟`,
+        
+        `❄️ Warm Wishes from ${fromName} ❄️
+
+This Christmas, may you be surrounded by love and joy!
+
+<strong>${fromName}</strong> wishes you a season filled with laughter, magic, and cherished moments.
+Happy Holidays! 🎅✨🎄`
+    ];
+    
+    return messages[Math.floor(Math.random() * messages.length)];
+}
 
 function initWishPage() {
     const wishId = getQueryParam('id');
@@ -252,15 +279,8 @@ function initWishPage() {
                     // Apply theme
                     applyTheme(theme, wishBody);
 
-                    // Display message
-                    const customMessage = `
-                        🎄 Merry Christmas! 🎄
-
-                        This festive wish is from <strong>${fromName}</strong> to you!
-
-                        May your holidays be filled with joy, laughter, and love.
-                        Wishing you a magical Christmas season! 🎅⛄✨
-                    `;
+                    // Display random message
+                    const customMessage = getRandomWishMessage(fromName);
                     wishMessage.innerHTML = customMessage;
                 } else {
                     wishMessage.textContent = 'Wish not found! 🎄';
